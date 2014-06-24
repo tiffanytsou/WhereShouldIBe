@@ -1,0 +1,19 @@
+selector {
+    propoerty: value;
+}
+body {
+      background-color: #ADDFFF;
+      color: black; 
+      font-familiy: Courier;
+}
+h1 {
+      color: white;
+      font-family: Courier;
+      font-size: 50px;
+      text-align: center;
+      background-color: #000080; height: 75px; width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 5px solid white;
+}
+      
