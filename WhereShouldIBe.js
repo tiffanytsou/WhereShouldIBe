@@ -1,6 +1,6 @@
-var x = new Date();
-x.setFullYear(2100, 0, 14);
-var today = new Date();
+var time = new Date();
+console.log(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds());
+document.getElementById("time").innerHTML = x;
 
 function myFunction() {
     var x;
