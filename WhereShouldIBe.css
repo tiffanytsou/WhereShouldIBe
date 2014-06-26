@@ -4,7 +4,7 @@ selector {
 body {
       background-color: #ADDFFF;
       color: #000080; 
-      font-familiy: Courier;
+      font-family: Courier;
 }
 h1 {
       color: white;
@@ -15,6 +15,16 @@ h1 {
       margin-right: auto;
       border: 5px solid white;
       text-align: center;
+}
+h2 {
+    color: #000080;
+    font-family: Comic Sans MS;
+    font size: 50px;
+    background-color: white; height: 90px; width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid #000080;
+    text-align: center;
 }
      
       
