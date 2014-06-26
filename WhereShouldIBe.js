@@ -1,3 +1,11 @@
+var x;
+    if (confirm("Current Date") == true) {
+        x = "After";
+    } else {
+        x = "Before";
+    }
+    document.getElementById("demo").innerHTML = x;
+}
 //comparing time
 var x = new Date();
 x.setFullYear(2014, 5, 20);
