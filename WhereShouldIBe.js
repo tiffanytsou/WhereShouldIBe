@@ -9,7 +9,7 @@ if (x > today) {
 }
 
 
-document.getElementById("current").innerHTML = formatAMPM();
+document.getElementById("para1").innerHTML = formatAMPM();
 
 function formatAMPM() {
 var d = new Date(),
