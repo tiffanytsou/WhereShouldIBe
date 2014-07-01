@@ -42,3 +42,50 @@ function showError(error) {
             break;
     }
 }
+
+class Schedule {
+    private string[] locations=new string[24]
+    public Schedule(string day) {
+        if(day === "Monday") {
+            loadMonday();
+        }else if(day === "Tuesday") {
+            loadTuesday();
+        }else if(day === "Wednesday") {
+            loadWednesday();
+        }else if(day === "Thursday") {
+            loadThursday();
+        }else if(day === "Friday") {
+            loadFriday();
+        }else if(day === "Saturday") {
+            loadSaturday();
+        }else if(day === "Sunday") {
+            loadSunday();
+        }
+    }
+    private void loadMonday() {
+        locations[0] = "home";
+        locations[1] = "home";
+        locations[2] = "home";
+        locations[3] = "home";
+        locations[4] = "home";
+        locations[5] = "home";
+        locations[6] = "home";
+        locations[7] = "home";
+        locations[8] = "home";
+        locations[9] = "work";
+        locations[10] = "work";
+        locations[11] = "work";
+        locations[12] = "work";
+        locations[13] = "work";
+        locations[14] = "work";
+        locations[15] = "work";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+        locations[16] = "home";
+    }
+}
