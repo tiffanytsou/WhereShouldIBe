@@ -226,6 +226,33 @@ class Schedule {
     }
     private void loadSunday() {
         locations[0] = "home";
-        locations[0] = "home";
+        locations[1] = "home";
+        locations[2] = "home";
+        locations[3] = "home";
+        locations[4] = "home";
+        locations[5] = "home";
+        locations[6] = "home";
+        locations[7] = "home";
+        locations[8] = "home";
+        locations[9] = "home";
+        locations[10] = "home";
+        locations[11] = "home";
+        locations[12] = "violin";
+        locations[13] = "home";
+        locations[14] = "golf";
+        locations[15] = "home";
+        locations[16] = "home";
+        locations[17] = "home";
+        locations[18] = "home";
+        locations[19] = "home";
+        locations[20] = "home";
+        locations[21] = "home";
+        locations[22] = "home";
+        locations[23] = "home";
+        locations[24] = "home";
+    }
+    public string WhereShouldIBe(Date) {
+        var hours = new Date(hours)
+        return locations[hours];
     }
 }
