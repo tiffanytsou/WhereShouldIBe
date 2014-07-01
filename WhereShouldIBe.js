@@ -4,9 +4,9 @@ var today = new Date();
 
     if (x > today) {
         alert("Today is before 14th January 2100");
-        } else {
+    } else {
         alert("Today is after 14th January 2100");
-        }
+    }
 var x = document.getElementById("demo");
  
 function getLocation() {
@@ -250,8 +250,8 @@ class Schedule {
         locations[23] = "home";
         locations[24] = "home";
     }
-    public string WhereShouldIBe(Date) {
-        var hours = new Date(hours)
+    public string WhereShouldIBe(date) {
+        var hours = d.getHours();
         return locations[hours];
     }
 }
