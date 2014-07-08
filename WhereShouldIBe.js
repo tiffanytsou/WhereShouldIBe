@@ -1,7 +1,6 @@
 var currentPosition;
 
 $(document).ready(function() {
-    alert(new Schedule('Monday').WhereShouldIBe(new Date()).name);
     $('#current-time').text(new Date().toTimeString());
     $('#message').text(createMessage());
 });
@@ -32,19 +31,19 @@ function createMessage() {
     var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe();
     if(areTheseTheSameLocation(currentPosition, shouldBeAt)) {
         message = 'You are at' + shouldBeAt.name();
-    } else if(areTheseTheSameLocation(currentPosition, new Place('home')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('home'))) {
         message = 'You are at home. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('work')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('work'))) {
         message = 'You are at work. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('tutoring')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('tutoring'))) {
         message = 'You are at tutoring. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('greentea')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('greentea'))) {
         message = 'You are at Green Tea. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('taekwondo')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('taekwondo'))) {
         message = 'You are at taekwondo. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('violin')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('violin'))) {
         message = 'You are at violin. You should be at ' + shouldBeAt.name;
-    } else if(areTheseTheSameLocation(currentPosition, new Place('golf')) {
+    } else if(areTheseTheSameLocation(currentPosition, new Place('golf'))) {
         message = 'You are at golf. You should be at ' + shouldBeAt.name;
     } else {
         message = 'You are lost or something. Where are you?!'
