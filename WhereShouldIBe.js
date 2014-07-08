@@ -32,7 +32,7 @@ function createMessage() {
     var message = '';
     var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe(new Date());
     if(areTheseTheSameLocation(currentPosition, shouldBeAt)) {
-        message = 'You are at' + shouldBeAt.name();
+        message = 'You are at' + shouldBeAt.name;
     } else if(areTheseTheSameLocation(currentPosition, new Place('home'))) {
         message = 'You are at home. You should be at ' + shouldBeAt.name;
     } else if(areTheseTheSameLocation(currentPosition, new Place('work'))) {
