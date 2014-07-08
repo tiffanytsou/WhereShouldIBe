@@ -3,7 +3,6 @@ var currentPosition;
 $(document).ready(function() {
     getLocation();
     $('#current-time').text(new Date().toTimeString());
-    $('#message').text(createMessage());
 });
  
 function getLocation() {
@@ -17,7 +16,7 @@ function showPosition(position) {
     var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
     $("#mapholder").html("<img src='" + img_url + "'>");
     currentPosition = position.coords;
-    alert(position.coords);
+    $('#message').text(createMessage());
 }
 
 function showError(error) {
@@ -26,8 +25,6 @@ function showError(error) {
 
 function areTheseTheSameLocation(currentPos, shouldBeAt) {
     var x = 0.01;
-    alert(currentPos);
-    alert(shouldBeAt);
     return (currentPos.latitude > shouldBeAt.latitude - x) && (currentPos.longitude < shouldBeAt.longitude + x);
 }
 
