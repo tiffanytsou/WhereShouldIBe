@@ -1,15 +1,9 @@
 var currentPosition;
 
 $(document).ready(function() {
-    var jan142100 = new Date();
-    jan142100.setFullYear(2100, 0, 14);
-    if (jan142100 > new Date()) {
-        alert("Today is before 14th January 2100");
-    } else {
-        alert("Today is after 14th January 2100");
-    }
     alert(new Schedule('Monday').WhereShouldIBe(new Date()).name);
     $('#current-time').text(new Date().toTimeString());
+    //$('#message').text(createMessage());
 });
  
 function getLocation() {
@@ -30,7 +24,7 @@ function showError(error) {
 }
 
 function areTheseTheSameLocation(currentPosition, shouldBeAt) {
-    var x = 10; // Need to know how many degrees is about a mile
+    var x = 0.01;
     return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
 }
 function createMessage() {
