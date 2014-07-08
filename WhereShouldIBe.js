@@ -17,6 +17,7 @@ function showPosition(position) {
     var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
     $("#mapholder").html("<img src='" + img_url + "'>");
     currentPosition = position.coords;
+    alert(position.coords);
 }
 
 function showError(error) {
