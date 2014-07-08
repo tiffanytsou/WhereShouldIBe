@@ -7,39 +7,23 @@ $(document).ready(function() {
         alert("Today is after 14th January 2100");
     }
     alert(new Schedule('Monday').WhereShouldIBe(new Date()).name);
+    $('#current-time').text(new Date().toTimeString());
 });
  
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition,showError);
-    } else {
-        $('#demo').html("Geolocation is not supported by this browser.");
     }
 }
 
 function showPosition(position) {
     var latlon = position.coords.latitude+","+position.coords.longitude;
-
-    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="
-    +latlon+"&zoom=14&size=400x300&sensor=false";
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+    $("#mapholder").html("<img src='" + img_url + "'>");
 }
 
 function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            $('#demo').html("User denied the request for Geolocation.");
-            break;
-        case error.POSITION_UNAVAILABLE:
-            $('#demo').html("Location information is unavailable.");
-            break;
-        case error.TIMEOUT:
-            $('#demo').html("The request to get user location timed out.");
-            break;
-        case error.UNKNOWN_ERROR:
-            $('#demo').html("An unknown error occurred.");
-            break;
-    }
+    alert(error.code);
 }
 
 function areTheseTheSameLocation(currentPosition, shouldBeAt) {
