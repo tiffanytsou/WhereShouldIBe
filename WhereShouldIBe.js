@@ -35,11 +35,27 @@ function areTheseTheSameLocation(currentPosition, shouldBeAt) {
 }
 function createMessage() {
     var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe();
-    if(areTheseTheSameLocation(currentPosition, shouldBeAt))
-        return "You are at" + shouldBeAt.name();
+    if(areTheseTheSameLocation(currentPosition, shouldBeAt)) {
+        return 'You are at' + shouldBeAt.name();
+    } else if (areTheseTheSameLocation(currentPosition, new Place('home')) {
+        return 'You are at home. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('work')) {
+        return 'You are at work. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('tutoring')) {
+        return 'You are at tutoring. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('greentea')) {
+        return 'You are at Green Tea. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('taekwondo')) {
+        return 'You are at taekwondo. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('violin')) {
+        return 'You are at violin. You should be at ' + shouldBeAt.name;
+    } else if (areTheseTheSameLocation(currentPosition, new Place('golf')) {
+        return 'You are at golf. You should be at ' + shouldBeAt.name;
+    } else {
+        return 'You are lost or something. Where are you?!'
+    }
 }
-else {
-}
+
 function Schedule(day) {
     this.locations = new Array();
     if(day === 1) {
