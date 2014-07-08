@@ -1,6 +1,7 @@
 var currentPosition;
 
 $(document).ready(function() {
+    getLocation();
     $('#current-time').text(new Date().toTimeString());
     $('#message').text(createMessage());
 });
@@ -22,10 +23,11 @@ function showError(error) {
     alert(error.code);
 }
 
-function areTheseTheSameLocation(currentPosition, shouldBeAt) {
+function areTheseTheSameLocation(currentPos, shouldBeAt) {
     var x = 0.01;
-    return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
+    return (currentPos.latitude > shouldBeAt.latitude - x) && (currentPos.longitude < shouldBeAt.longitude + x);
 }
+
 function createMessage() {
     var message = '';
     var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe(new Date());
