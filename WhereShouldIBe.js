@@ -1,19 +1,19 @@
-var x = new Date();
-    x.setFullYear(2100, 0, 14);
-var today = new Date();
-
-    if (x > today) {
+$(document).ready(function() {
+    var jan142100 = new Date();
+    jan142100.setFullYear(2100, 0, 14);
+    if (jan142100 > new Date()) {
         alert("Today is before 14th January 2100");
     } else {
         alert("Today is after 14th January 2100");
     }
-var x = document.getElementById("demo");
+    alert(new Schedule('Monday').WhereShouldIBe(new Date()).name);
+});
  
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition,showError);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        $('#demo').html("Geolocation is not supported by this browser.");
     }
 }
 
@@ -28,231 +28,259 @@ function showPosition(position) {
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation."
+            $('#demo').html("User denied the request for Geolocation.");
             break;
         case error.POSITION_UNAVAILABLE:
-            x.innerHTML = "Location information is unavailable."
+            $('#demo').html("Location information is unavailable.");
             break;
         case error.TIMEOUT:
-            x.innerHTML = "The request to get user location timed out."
+            $('#demo').html("The request to get user location timed out.");
             break;
         case error.UNKNOWN_ERROR:
-            x.innerHTML = "An unknown error occurred."
+            $('#demo').html("An unknown error occurred.");
             break;
     }
 }
 
-class Schedule {
-    private string[] locations=new string[24]
-    public Schedule(string day) {
-        if(day === "Monday") {
-            loadMonday();
-        }else if(day === "Tuesday") {
-            loadTuesday();
-        }else if(day === "Wednesday") {
-            loadWednesday();
-        }else if(day === "Thursday") {
-            loadThursday();
-        }else if(day === "Friday") {
-            loadFriday();
-        }else if(day === "Saturday") {
-            loadSaturday();
-        }else if(day === "Sunday") {
-            loadSunday();
-        }
+function areTheseTheSameLocation(currentPosition, shouldBeAt) {
+    var x = 10; // Need to know how many degrees is about a mile
+    return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
+}
+
+function Schedule(day) {
+    this.locations = new Array();
+    if(day === "Monday") {
+        this.loadMonday();
+    }else if(day === "Tuesday") {
+        this.loadTuesday();
+    }else if(day === "Wednesday") {
+        this.loadWednesday();
+    }else if(day === "Thursday") {
+        this.loadThursday();
+    }else if(day === "Friday") {
+        this.loadFriday();
+    }else if(day === "Saturday") {
+        this.loadSaturday();
+    }else if(day === "Sunday") {
+        this.loadSunday();
     }
-    private void loadMonday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "work";
-        locations[10] = "work";
-        locations[11] = "work";
-        locations[12] = "work";
-        locations[13] = "work";
-        locations[14] = "work";
-        locations[15] = "work";
-        locations[16] = "home";
-        locations[17] = "home";
-        locations[18] = "home";
-        locations[19] = "home";
-        locations[20] = "home";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadTuesday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "work";
-        locations[10] = "work";
-        locations[11] = "work";
-        locations[12] = "work";
-        locations[13] = "work";
-        locations[14] = "work";
-        locations[15] = "work";
-        locations[16] = "home";
-        locations[17] = "home";
-        locations[18] = "taekwondo";
-        locations[19] = "home";
-        locations[20] = "home";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadWednesday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "home";
-        locations[10] = "tutoring";
-        locations[11] = "tutoring";
-        locations[12] = "tutoring";
-        locations[13] = "home";
-        locations[14] = "home";
-        locations[15] = "home";
-        locations[16] = "home";
-        locations[17] = "home";
-        locations[18] = "home";
-        locations[19] = "home";
-        locations[20] = "home";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadThursday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "work";
-        locations[10] = "work";
-        locations[11] = "work";
-        locations[12] = "work";
-        locations[13] = "work";
-        locations[14] = "work";
-        locations[15] = "work";
-        locations[16] = "green tea";
-        locations[17] = "green tea";
-        locations[18] = "green tea";
-        locations[19] = "green tea";
-        locations[20] = "green tea";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadFriday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "home";
-        locations[10] = "home";
-        locations[11] = "home";
-        locations[12] = "home";
-        locations[13] = "home";
-        locations[14] = "home";
-        locations[15] = "green tea";
-        locations[16] = "green tea";
-        locations[17] = "green tea";
-        locations[18] = "green tea";
-        locations[19] = "green tea";
-        locations[20] = "green tea";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadSaturday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "home";
-        locations[10] = "home";
-        locations[11] = "home";
-        locations[12] = "home";
-        locations[13] = "tutoring";
-        locations[14] = "tutoring";
-        locations[15] = "tutoring";
-        locations[16] = "green tea";
-        locations[17] = "green tea";
-        locations[18] = "green tea";
-        locations[19] = "green tea";
-        locations[20] = "green tea";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    private void loadSunday() {
-        locations[0] = "home";
-        locations[1] = "home";
-        locations[2] = "home";
-        locations[3] = "home";
-        locations[4] = "home";
-        locations[5] = "home";
-        locations[6] = "home";
-        locations[7] = "home";
-        locations[8] = "home";
-        locations[9] = "home";
-        locations[10] = "home";
-        locations[11] = "home";
-        locations[12] = "violin";
-        locations[13] = "home";
-        locations[14] = "golf";
-        locations[15] = "home";
-        locations[16] = "home";
-        locations[17] = "home";
-        locations[18] = "home";
-        locations[19] = "home";
-        locations[20] = "home";
-        locations[21] = "home";
-        locations[22] = "home";
-        locations[23] = "home";
-        locations[24] = "home";
-    }
-    public string WhereShouldIBe(date) {
-        var hours = d.getHours();
-        return locations[hours];
+}
+
+Schedule.prototype.loadMonday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "work";
+    this.locations[10] = "work";
+    this.locations[11] = "work";
+    this.locations[12] = "work";
+    this.locations[13] = "work";
+    this.locations[14] = "work";
+    this.locations[15] = "work";
+    this.locations[16] = "home";
+    this.locations[17] = "home";
+    this.locations[18] = "home";
+    this.locations[19] = "home";
+    this.locations[20] = "home";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadTuesday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "work";
+    this.locations[10] = "work";
+    this.locations[11] = "work";
+    this.locations[12] = "work";
+    this.locations[13] = "work";
+    this.locations[14] = "work";
+    this.locations[15] = "work";
+    this.locations[16] = "home";
+    this.locations[17] = "home";
+    this.locations[18] = "taekwondo";
+    this.locations[19] = "home";
+    this.locations[20] = "home";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadWednesday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "home";
+    this.locations[10] = "tutoring";
+    this.locations[11] = "tutoring";
+    this.locations[12] = "tutoring";
+    this.locations[13] = "home";
+    this.locations[14] = "home";
+    this.locations[15] = "home";
+    this.locations[16] = "home";
+    this.locations[17] = "home";
+    this.locations[18] = "home";
+    this.locations[19] = "home";
+    this.locations[20] = "home";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadThursday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "work";
+    this.locations[10] = "work";
+    this.locations[11] = "work";
+    this.locations[12] = "work";
+    this.locations[13] = "work";
+    this.locations[14] = "work";
+    this.locations[15] = "work";
+    this.locations[16] = "green tea";
+    this.locations[17] = "green tea";
+    this.locations[18] = "green tea";
+    this.locations[19] = "green tea";
+    this.locations[20] = "green tea";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadFriday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "home";
+    this.locations[10] = "home";
+    this.locations[11] = "home";
+    this.locations[12] = "home";
+    this.locations[13] = "home";
+    this.locations[14] = "home";
+    this.locations[15] = "green tea";
+    this.locations[16] = "green tea";
+    this.locations[17] = "green tea";
+    this.locations[18] = "green tea";
+    this.locations[19] = "green tea";
+    this.locations[20] = "green tea";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadSaturday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "home";
+    this.locations[10] = "home";
+    this.locations[11] = "home";
+    this.locations[12] = "home";
+    this.locations[13] = "tutoring";
+    this.locations[14] = "tutoring";
+    this.locations[15] = "tutoring";
+    this.locations[16] = "green tea";
+    this.locations[17] = "green tea";
+    this.locations[18] = "green tea";
+    this.locations[19] = "green tea";
+    this.locations[20] = "green tea";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.loadSunday = function() {
+    this.locations[0] = "home";
+    this.locations[1] = "home";
+    this.locations[2] = "home";
+    this.locations[3] = "home";
+    this.locations[4] = "home";
+    this.locations[5] = "home";
+    this.locations[6] = "home";
+    this.locations[7] = "home";
+    this.locations[8] = "home";
+    this.locations[9] = "home";
+    this.locations[10] = "home";
+    this.locations[11] = "home";
+    this.locations[12] = "violin";
+    this.locations[13] = "home";
+    this.locations[14] = "golf";
+    this.locations[15] = "home";
+    this.locations[16] = "home";
+    this.locations[17] = "home";
+    this.locations[18] = "home";
+    this.locations[19] = "home";
+    this.locations[20] = "home";
+    this.locations[21] = "home";
+    this.locations[22] = "home";
+    this.locations[23] = "home";
+    this.locations[24] = "home";
+}
+Schedule.prototype.WhereShouldIBe = function(date) {
+    var hours = date.getHours();
+    return new Place(this.locations[hours]);
+}
+
+
+function Place(name) {
+    this.name = name;
+    if (name == 'home') {
+        // Need to find out what the lat long are for each of these
+        this.latitude = '123';
+        this.longitude = '456';
+    } else if (name == 'work') {
+
+    } else if (name == 'school') {
+
+    } else if (name == 'violin') {
+        
+    } else if (name == 'golf') {
+        
+    } else if (name == 'green tea') {
+        
+    } else if (name == 'tutoring') {
+        
+    } else if (name == 'taekwondo') {
+        
     }
 }
 function 
