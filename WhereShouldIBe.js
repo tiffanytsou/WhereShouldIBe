@@ -271,7 +271,7 @@ function Place(name) {
         this.longitude = -84.220381;
     } else if (name == 'tutoring') {
         this.latitude = 34.020648;
-        this.longitude = -84.190979
+        this.longitude = -84.190979;
     } else if (name == 'violin') {
         this.latitude = 34.00223;
         this.longitude = -84.08353;
