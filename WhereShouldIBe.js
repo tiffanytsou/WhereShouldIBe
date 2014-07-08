@@ -20,11 +20,13 @@ function showPosition(position) {
 }
 
 function showError(error) {
-    alert(error.code);
+    alert('Sorry, there was an error getting your location. Error code: ' + error.code);
 }
 
 function areTheseTheSameLocation(currentPos, shouldBeAt) {
     var x = 0.01;
+    alert(currentPos);
+    alert(shouldBeAt);
     return (currentPos.latitude > shouldBeAt.latitude - x) && (currentPos.longitude < shouldBeAt.longitude + x);
 }
 
