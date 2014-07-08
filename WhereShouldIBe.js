@@ -42,9 +42,14 @@ function showError(error) {
     }
 }
 
+function areTheseTheSameLocation(currentPosition, shouldBeAt) {
+    var x = 10; // Need to know how many degrees is about a mile
+    return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
+}
+
 class Schedule {
-    private string[] locations=new string[24]
-    public Schedule(string day) {
+    private Place[] locations = new Place[24]
+    public Schedule(day) {
         if(day === "Monday") {
             loadMonday();
         }else if(day === "Tuesday") {
@@ -250,8 +255,38 @@ class Schedule {
         locations[23] = "home";
         locations[24] = "home";
     }
-    public string WhereShouldIBe(date) {
+    public Place WhereShouldIBe(date) {
         var hours = d.getHours();
-        return locations[hours];
+        return new Place(locations[hours]);
+    }
+}
+
+class Place {
+    var name, latitude, longitude;
+    public Place(name) {
+        this.name = name;
+        loadPlaces();
+    }
+
+    private void loadPlaces() {
+        if (name == 'home') {
+            // Need to find out what the lat long are for each of these
+            latitude = '123';
+            longitude = '456';
+        } else if (name == 'work') {
+
+        } else if (name == 'school') {
+
+        } else if (name == 'violin') {
+            
+        } else if (name == 'golf') {
+            
+        } else if (name == 'green tea') {
+            
+        } else if (name == 'tutoring') {
+            
+        } else if (name == 'taekwondo') {
+            
+        }
     }
 }
