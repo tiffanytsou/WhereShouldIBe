@@ -264,37 +264,26 @@ Schedule.prototype.WhereShouldIBe = function(date) {
 function Place(name) {
     this.name = name;
     if (name == 'home') {
-        // Need to find out what the lat long are for each of these
-        this.latitude = '123';
-        this.longitude = '456';
+        this.latitude = 33.97591;
+        this.longitude = -84.065166;
     } else if (name == 'work') {
-
-    } else if (name == 'school') {
-
-    } else if (name == 'violin') {
-        
-    } else if (name == 'golf') {
-        
-    } else if (name == 'green tea') {
-        
+        this.latitude = 33.968149;
+        this.longitude = -84.220381;
     } else if (name == 'tutoring') {
-        
+        this.latitude = 34.020648;
+        this.longitude = -84.190979
+    } else if (name == 'violin') {
+        this.latitude = 34.00223;
+        this.longitude = -84.08353;
+    } else if (name == 'golf') {
+        this.latitude = 34.025364;
+        this.longitude = -84.150338;
+    } else if (name == 'green tea') {
+        this.latitude = 34.031838;
+        this.longitude = -83.906665;
     } else if (name == 'taekwondo') {
-        
+        this.latitude = 34.004275;
+        this.longitude = -84.084688;
     }
 }
-function 
-if(place==="home") {
-    lat: 33.97591;
-    long: -84.065166;
-else if(place==="work") {
-    lat: 33.968149;
-    long: -84.220381;
-else if(place==="tutoring") {
-    lat: 34.020648;
-    long: -84.190979;
-else if(place==="greentea") {
-    lat: 34.031838;
-    long: -83.906665;
-}
-}
+
