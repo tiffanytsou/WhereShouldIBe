@@ -255,3 +255,18 @@ class Schedule {
         return locations[hours];
     }
 }
+function 
+if(place==="home") {
+    lat: 33.97591;
+    long: -84.065166;
+else if(place==="work") {
+    lat: 33.968149;
+    long: -84.220381;
+else if(place==="tutoring") {
+    lat: 34.020648;
+    long: -84.190979;
+else if(place==="greentea") {
+    lat: 34.031838;
+    long: -83.906665;
+}
+}
