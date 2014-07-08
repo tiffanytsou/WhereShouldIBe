@@ -1,3 +1,5 @@
+var currentPosition;
+
 $(document).ready(function() {
     var jan142100 = new Date();
     jan142100.setFullYear(2100, 0, 14);
@@ -20,6 +22,7 @@ function showPosition(position) {
     var latlon = position.coords.latitude+","+position.coords.longitude;
     var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
     $("#mapholder").html("<img src='" + img_url + "'>");
+    currentPosition = position.coords;
 }
 
 function showError(error) {
@@ -30,22 +33,28 @@ function areTheseTheSameLocation(currentPosition, shouldBeAt) {
     var x = 10; // Need to know how many degrees is about a mile
     return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
 }
-
+function createMessage() {
+    var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe();
+    if(areTheseTheSameLocation(currentPosition, shouldBeAt))
+        return "You are at" + shouldBeAt.name();
+}
+else {
+}
 function Schedule(day) {
     this.locations = new Array();
-    if(day === "Monday") {
+    if(day === 1) {
         this.loadMonday();
-    }else if(day === "Tuesday") {
+    }else if(day === 2) {
         this.loadTuesday();
-    }else if(day === "Wednesday") {
+    }else if(day === 3) {
         this.loadWednesday();
-    }else if(day === "Thursday") {
+    }else if(day === 4) {
         this.loadThursday();
-    }else if(day === "Friday") {
+    }else if(day === 5) {
         this.loadFriday();
-    }else if(day === "Saturday") {
+    }else if(day === 6) {
         this.loadSaturday();
-    }else if(day === "Sunday") {
+    }else if(day === 0) {
         this.loadSunday();
     }
 }
