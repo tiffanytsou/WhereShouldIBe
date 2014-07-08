@@ -28,7 +28,7 @@ function areTheseTheSameLocation(currentPosition, shouldBeAt) {
 }
 function createMessage() {
     var message = '';
-    var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe();
+    var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe(new Date());
     if(areTheseTheSameLocation(currentPosition, shouldBeAt)) {
         message = 'You are at' + shouldBeAt.name();
     } else if(areTheseTheSameLocation(currentPosition, new Place('home'))) {
