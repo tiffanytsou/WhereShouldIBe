@@ -3,7 +3,7 @@ var currentPosition;
 $(document).ready(function() {
     alert(new Schedule('Monday').WhereShouldIBe(new Date()).name);
     $('#current-time').text(new Date().toTimeString());
-    //$('#message').text(createMessage());
+    $('#message').text(createMessage());
 });
  
 function getLocation() {
@@ -28,26 +28,28 @@ function areTheseTheSameLocation(currentPosition, shouldBeAt) {
     return (currentPosition.latitude > shouldBeAt.latitude - x) && (currentPosition.longitude < shouldBeAt.longitude + x);
 }
 function createMessage() {
+    var message = '';
     var shouldBeAt = new Schedule(new Date().getDay()).WhereShouldIBe();
     if(areTheseTheSameLocation(currentPosition, shouldBeAt)) {
-        return 'You are at' + shouldBeAt.name();
+        message = 'You are at' + shouldBeAt.name();
     } else if (areTheseTheSameLocation(currentPosition, new Place('home')) {
-        return 'You are at home. You should be at ' + shouldBeAt.name;
+        message = 'You are at home. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('work')) {
-        return 'You are at work. You should be at ' + shouldBeAt.name;
+        message = 'You are at work. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('tutoring')) {
-        return 'You are at tutoring. You should be at ' + shouldBeAt.name;
+        message = 'You are at tutoring. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('greentea')) {
-        return 'You are at Green Tea. You should be at ' + shouldBeAt.name;
+        message = 'You are at Green Tea. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('taekwondo')) {
-        return 'You are at taekwondo. You should be at ' + shouldBeAt.name;
+        message = 'You are at taekwondo. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('violin')) {
-        return 'You are at violin. You should be at ' + shouldBeAt.name;
+        message = 'You are at violin. You should be at ' + shouldBeAt.name;
     } else if (areTheseTheSameLocation(currentPosition, new Place('golf')) {
-        return 'You are at golf. You should be at ' + shouldBeAt.name;
+        message = 'You are at golf. You should be at ' + shouldBeAt.name;
     } else {
-        return 'You are lost or something. Where are you?!'
+        message = 'You are lost or something. Where are you?!'
     }
+    return message;
 }
 
 function Schedule(day) {
